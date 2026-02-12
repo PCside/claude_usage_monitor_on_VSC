@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 280px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+    h1 {
+      font-size: 16px;
+      margin: 0 0 16px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+    .usage-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .usage-label {
+      color: #666;
+    }
+    .usage-value {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .usage-value.warning {
+      color: #FF6600;
+    }
+    .usage-value.normal {
+      color: #4CAF50;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #eee;
+      border-radius: 3px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+    .progress-fill.normal {
+      background: #4CAF50;
+    }
+    .progress-fill.warning {
+      background: #FF6600;
+    }
+    .reset-time {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .error {
+      color: #f44336;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .buttons {
+      display: flex;
+      gap: 8px;
+    }
+    button {
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .primary {
+      background: #6366f1;
+      color: white;
+    }
+    .primary:hover {
+      background: #4f46e5;
+    }
+    .secondary {
+      background: #e5e7eb;
+      color: #374151;
+    }
+    .secondary:hover {
+      background: #d1d5db;
+    }
+    .last-update {
+      font-size: 11px;
+      color: #999;
+      margin-top: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Claude Usage Monitor</h1>
+
+  <div id="error" class="error" style="display: none;"></div>
+
+  <div id="content">
+    <div class="usage-item">
+      <span class="usage-label">5 Hour</span>
+      <span id="fiveHour" class="usage-value">--%</span>
+    </div>
+    <div class="progress-bar">
+      <div id="fiveHourBar" class="progress-fill normal" style="width: 0%"></div>
+    </div>
+    <div id="fiveHourReset" class="reset-time"></div>
+
+    <div class="usage-item">
+      <span class="usage-label">7 Day</span>
+      <span id="sevenDay" class="usage-value">--%</span>
+    </div>
+    <div class="progress-bar">
+      <div id="sevenDayBar" class="progress-fill normal" style="width: 0%"></div>
+    </div>
+    <div id="sevenDayReset" class="reset-time"></div>
+  </div>
+
+  <div class="buttons">
+    <button id="refresh" class="primary">Refresh</button>
+    <button id="openClaude" class="secondary">Open Claude</button>
+  </div>
+
+  <div id="lastUpdate" class="last-update"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

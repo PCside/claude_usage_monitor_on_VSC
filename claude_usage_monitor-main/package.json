@@ -1,0 +1,44 @@
+{
+  "name": "claude-usage-monitor",
+  "displayName": "Claude Usage Monitor",
+  "description": "Display Claude usage stats in the status bar (requires Chrome extension)",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claude-usage-monitor.refresh",
+        "title": "Claude Usage: Refresh"
+      },
+      {
+        "command": "claude-usage-monitor.showDetails",
+        "title": "Claude Usage: Show Details"
+      },
+      {
+        "command": "claude-usage-monitor.openChrome",
+        "title": "Claude Usage: Open Claude.ai"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.19.0",
+    "typescript": "^5.3.0"
+  }
+}
